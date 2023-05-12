@@ -1,0 +1,57 @@
+var favs = Array.from(document.querySelectorAll(".fa-heart"));
+
+var deletebtn=Array.from(document.querySelectorAll('.fa-trash-alt'));
+var cards= Array.from(document.querySelectorAll ('.card'));
+var plusbtns=Array.from(document.querySelectorAll ('.fa-plus-circle'));
+var minbtns=Array.from(document.querySelectorAll('.fa-minus-circle'));
+
+for (let fav of favs) 
+{
+    fav.addEventListener("click",function(){
+if (fav.style.color=="black"){
+fav.style.color="red"
+}
+else {
+    fav.style.color="black"
+}
+    
+
+})
+}
+
+for (let i in deletebtn ){
+deletebtn[i].addEventListener("click",function(){
+cards[i].remove(),
+total()
+})
+}
+for(let plusbtn of plusbtns){
+
+    plusbtn.addEventListener("click", function() {
+plusbtn.nextElementSibling.innerHTML++
+total()
+
+    }
+    
+    )
+}
+for (let minbtn of minbtns ){
+minbtn.addEventListener("click" , function() {
+minbtn.previousElementSibling.innerHTML >0   ? /*if*/
+minbtn.previousElementSibling.innerHTML-- :/*else*/
+
+total()
+}
+)}
+function total() {
+let qte=Array.from(document.querySelectorAll(".qute"));
+console.log(qte);
+let price=Array.from(document.querySelectorAll(".unitt-price"));
+console.log(price);
+let s= 0
+for(let i= 0; i<price.length;i++){
+    s=s+ price[i].innerHTML*qte[i].innerHTML;
+}
+console.log(s)
+document.getElementById("total-price").innerHTML=s
+}
